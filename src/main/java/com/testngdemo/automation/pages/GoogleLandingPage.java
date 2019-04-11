@@ -31,7 +31,7 @@ public class GoogleLandingPage extends Page {
     }
 
     public GoogleLandingPage doTheSearchAfterQueryEntered(){
-        log.info("senfing 'Enter' key");
+        log.info("sending 'Enter' key");
         searchInput.sendKeys(Keys.ENTER);
         waitForPageLoaded(driver);
         return new GoogleLandingPage(driver);
