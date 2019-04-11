@@ -47,10 +47,10 @@ public class GoogleLandingPage extends Page {
         return new GoogleLandingPage(driver);
     }
 
-    @Step("analyzing found results and doing screenshot of the page")
-    public void ensureThatAtLeastOneSearchResultAppeared() {
-        log.info("checking that at least 1 result is displayed in search");
-        Assert.assertTrue(googleSearchResults.size() > 0, "ooops, looks nothing have been found in search. Please contact test developers for investigation");
+    @Step("analyzing found results and dumping screenshot of the page")
+    public int getNumberOfFoundResults() {
         captureSnapshotForAllure(driver);
+        log.info("getting the length of list representing search results found");
+        return googleSearchResults.size();
     }
 }

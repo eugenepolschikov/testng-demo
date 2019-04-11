@@ -3,6 +3,7 @@ package com.testngdemo.automation.functional;
 import com.testngdemo.automation.pages.GoogleLandingPage;
 import com.testngdemo.automation.parallelexecution.TLDriverFactory;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Features;
@@ -11,6 +12,7 @@ import ru.yandex.qatools.allure.annotations.Title;
 
 /**
  * First test suite for demo testNg purposes
+ *
  * @author Eugene Polschikov
  * @date 2019-04-11
  */
@@ -32,11 +34,11 @@ public class GoogleLandingPageFirstTest extends TestSuitesBase {
         driver.get(baseUrl);
 
         log.info("do search on google landing page by string query");
-
-        new GoogleLandingPage(driver)
-                .enterQueryToSearchFor(QUERY_PATTERN_FIRST)
-                .doTheSearchAfterQueryEntered()
-                .ensureThatAtLeastOneSearchResultAppeared();
+        GoogleLandingPage myLandingPage = new GoogleLandingPage(driver);
+        myLandingPage.enterQueryToSearchFor(QUERY_PATTERN_FIRST)
+                .doTheSearchAfterQueryEntered();
+        log.info("checking that at least 1 result is displayed in search");
+        Assert.assertTrue(myLandingPage.getNumberOfFoundResults() > 0, "ooops, looks nothing have been found in search. Please contact test developers for investigation");
     }
 
 
@@ -52,10 +54,10 @@ public class GoogleLandingPageFirstTest extends TestSuitesBase {
         driver.get(baseUrl);
 
         log.info("do search on google landing page by string query");
-
-        new GoogleLandingPage(driver)
-                .enterQueryToSearchFor(QUERY_PATTERN_FIRST)
-                .doTheSearchAfterQueryEntered()
-                .ensureThatAtLeastOneSearchResultAppeared();
+        GoogleLandingPage myLandingPage = new GoogleLandingPage(driver);
+        myLandingPage.enterQueryToSearchFor(QUERY_PATTERN_SECOND)
+                .doTheSearchAfterQueryEntered();
+        log.info("checking that at least 1 result is displayed in search");
+        Assert.assertTrue(myLandingPage.getNumberOfFoundResults() > 0, "ooops, looks nothing have been found in search. Please contact test developers for investigation");
     }
 }
