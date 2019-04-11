@@ -1,4 +1,4 @@
-package TestNgTestProj;
+package com.testngdemo.automation;
 
 import static org.junit.Assert.assertTrue;
 

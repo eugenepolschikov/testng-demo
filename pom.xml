@@ -12,35 +12,92 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
+
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <logback.version>1.1.7</logback.version>
+    <slf4j.version>1.7.16</slf4j.version>
+    <!--<testng.version>6.9.9</testng.version>-->
+    <testng.version>6.14.3</testng.version>
+    <!--<selenium.version>3.8.1</selenium.version>-->
+    <selenium.version>3.141.59</selenium.version>
+    <jsonpath.version>2.2.0</jsonpath.version>
+    <apachepoi.version>3.15</apachepoi.version>
+    <opencsv.version>2.3</opencsv.version>
+    <javaxmail.version>1.5.2</javaxmail.version>
+    <guava.version>21.0</guava.version>
+    <allure.version>1.5.2</allure.version>
+    <yandexallure.latest.version>2.2</yandexallure.latest.version>
+    <aspectj.version>1.8.10</aspectj.version>
   </properties>
 
   <dependencies>
-
 
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <version>6.14.3</version>
-      <scope>test</scope>
+      <version>${testng.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>3.141.59</version>
+      <version>${selenium.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-server</artifactId>
-      <version>3.141.59</version>
+      <version>${selenium.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jul-to-slf4j</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>log4j-over-slf4j</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ru.yandex.qatools.allure</groupId>
+      <artifactId>allure-testng-adaptor</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>ru.yandex.qatools.allure</groupId>
+      <artifactId>allure-maven-plugin</artifactId>
+      <version>${yandexallure.latest.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
 
 
@@ -91,5 +148,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

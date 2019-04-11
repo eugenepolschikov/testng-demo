@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <timestamp key="byDayTimestamp" datePattern="yyyy-MM-dd"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d |%-5level [%thread] %logger{120}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate" level="${logger.level.root:-INFO}" />
+    <logger name="ch.qos.logback" level="${logger.level.root:-INFO}" />
+    <logger name="org.dozer" level="${logger.level.root:-INFO}" />
+    <logger name="org.springframework" level="${logger.level.root:-INFO}" />
+
+    <root level="${logger.level.root:-INFO}">
+        <appender-ref ref="CONSOLE" />
+<!--        <appender-ref ref="ERROR-FILE"/>-->
+    </root>
+
+</configuration>
