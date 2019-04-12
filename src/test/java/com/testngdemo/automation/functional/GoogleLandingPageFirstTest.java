@@ -41,6 +41,25 @@ public class GoogleLandingPageFirstTest extends TestSuitesBase {
         Assert.assertTrue(myLandingPage.getNumberOfFoundResults() > 0, "ooops, looks nothing have been found in search. Please contact test developers for investigation");
     }
 
+    @Title("Google search landing page, first test")
+    @Features("TestNG demo")
+    @Stories("This is failing test for debugging and demo reporting purposes")
+    @Test(groups = {"SMOKE.SUITE"})
+    @Parameters({"browser"})
+    public void negativeFailingTestSearchByQuery() throws Exception {
+        WebDriver driver;
+        driver = TLDriverFactory.getDriver();
+        log.info("test started! Current threadID: {}", Thread.currentThread().getId());
+        driver.get(baseUrl);
+
+        log.info("do search on google landing page by string query");
+        GoogleLandingPage myLandingPage = new GoogleLandingPage(driver);
+        myLandingPage.enterQueryToSearchFor(QUERY_PATTERN_FIRST)
+                .doTheSearchAfterQueryEntered();
+        log.info("checking that at least 1 result is displayed in search");
+        Assert.assertEquals(myLandingPage.getNumberOfFoundResults(), 0, "ooops, looks nothing have been found in search. Please contact test developers for investigation");
+    }
+
 
     @Title("Google search landing page, second test")
     @Features("TestNG demo")
