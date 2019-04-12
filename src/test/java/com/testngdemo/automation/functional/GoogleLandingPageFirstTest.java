@@ -41,9 +41,9 @@ public class GoogleLandingPageFirstTest extends TestSuitesBase {
         Assert.assertTrue(myLandingPage.getNumberOfFoundResults() > 0, "ooops, looks nothing have been found in search. Please contact test developers for investigation");
     }
 
-    @Title("Google search landing page, first test")
-    @Features("TestNG demo")
-    @Stories("This is failing test for debugging and demo reporting purposes")
+    @Title("negative test")
+    @Features("negative test TestNG demo")
+    @Stories("negative test This is failing test for debugging and demo reporting purposes")
     @Test(groups = {"SMOKE.SUITE"})
     @Parameters({"browser"})
     public void negativeFailingTestSearchByQuery() throws Exception {
